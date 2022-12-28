@@ -14,10 +14,10 @@ client = TelegramClient('anon', api_id, api_hash)
 
 async def pp():
     catalog = await client.get_dialogs()
-    offset = 0
-    limit = 100
     all_participants = {}
     for dialog in catalog:
+        offset = 0
+        limit = 100
         try:
             if dialog.is_group:
                 print(dialog.name, dialog.id)
@@ -31,14 +31,13 @@ async def pp():
                         hash=0
                     ))
                     if not participants.users:
+                        print(len(curr_participants))
                         break
                     curr_participants.extend(participants.users)
                     offset += len(participants.users)
 
                 for participant in curr_participants:
-                    all_participants[dialog.name].append(
-                        {"id": participant.id, "first_name": participant.first_name, "last_name": participant.last_name,
-                        "user": participant.username, "phone": participant.phone, "is_bot": participant.bot})
+                    all_participants[dialog.name].append(participant.username)
 
         except Exception as e:
             print(e)
