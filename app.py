@@ -20,7 +20,6 @@ async def pp():
         limit = 100
         try:
             if dialog.is_group:
-                print(dialog.name, dialog.id)
                 all_participants[dialog.name] = []
                 curr_participants = []
                 my_channel = await client.get_entity(dialog.id)
@@ -31,7 +30,6 @@ async def pp():
                         hash=0
                     ))
                     if not participants.users:
-                        print(len(curr_participants))
                         break
                     curr_participants.extend(participants.users)
                     offset += len(participants.users)
