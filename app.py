@@ -1,12 +1,9 @@
 from telethon import TelegramClient
 import os
 import json
-from telethon.errors import SessionPasswordNeededError
 from telethon.tl.functions.channels import GetParticipantsRequest
 from telethon.tl.types import ChannelParticipantsSearch
-from telethon.tl.types import (
-    PeerChannel
-)
+
 
 api_id = os.environ['TELEGRAM_API_ID']
 api_hash = os.environ['TELEGRAM_API_HASH']
